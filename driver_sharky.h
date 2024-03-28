@@ -16,12 +16,11 @@ struct Sharky : Driver
     std::map<std::string, double> ret_val{};
 
     add_to_map(ret_val, "total_energy_consumption_kwh", this->get_0C06(telegram));
-    add_to_map(ret_val, "power_kw", this->get_0C2B(telegram));
     add_to_map(ret_val, "total_volume_m3", this->get_0C13(telegram));
     add_to_map(ret_val, "volume_flow_m3h", this->get_0B3B(telegram));
+    add_to_map(ret_val, "power_kw", this->get_0C2B(telegram));
     add_to_map(ret_val, "flow_temperature_c", this->get_0A5A(telegram));
     add_to_map(ret_val, "return_temperature_c", this->get_0A5E(telegram));
-    add_to_map(ret_val, "operating_time_d", this->get_0B26(telegram));
     add_to_map(ret_val, "temperature_difference_c", this->get_0A62(telegram));
 
     if (ret_val.size() > 0) {
