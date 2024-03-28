@@ -26,6 +26,7 @@
 #include "driver_qheat.h"
 #include "driver_qwater.h"
 #include "driver_rfmtx1.h"
+#include "driver_sharky.h"
 #include "driver_sharky774.h"
 #include "driver_topaseskr.h"
 #include "driver_ultrimis.h"

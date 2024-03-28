@@ -676,6 +676,26 @@ struct Driver
       }
       return ret_val;
     };
+    
+    esphome::optional<double> get_0A62(std::vector<unsigned char> &telegram) {
+      esphome::optional<double> ret_val{};
+      uint32_t usage = 0;
+      size_t i = 11;
+      uint32_t total_register = 0x0A62;
+      while (i < telegram.size()) {
+        uint32_t c = (((uint32_t)telegram[i+0] << 8) | ((uint32_t)telegram[i+1]));
+        if (c == total_register) {
+          i += 2;
+          usage = bcd_2_int(telegram, i, 2);
+          // in C
+          ret_val = usage / 10.0;
+          ESP_LOGVV(TAG, "Found register '0A62' with '%d'->'%f'", usage, ret_val.value());
+          break;
+        }
+        i++;
+      }
+      return ret_val;
+    };
 
     esphome::optional<double> get_4315(std::vector<unsigned char> &telegram) {
       esphome::optional<double> ret_val{};
